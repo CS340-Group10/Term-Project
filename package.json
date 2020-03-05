@@ -1,0 +1,26 @@
+{
+  "name": "group10project",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD home.html file: Is the home page. It shows tables of the highest contracts of all teams in any sports, and the highest injury rates.  \tThe page can also use one more table showing the most amount of some entity.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS340-Group10/step3project.git"
+  },
+  "author": "Gerson Lindor and Chasen Yamashita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS340-Group10/step3project/issues"
+  },
+  "homepage": "https://github.com/CS340-Group10/step3project#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.18.1",
+    "package.json": "^2.0.1"
+  }
+}

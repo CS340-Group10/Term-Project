@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- Search Bar -->
+<br><br>
+<form method="get" class="form1">
+<select class="dropdown">
+	<option name="Sports">Sports</option>
+	<option name="Teams">Teams</option>
+	<option name="Injuries">Injuries</option>
+</select><!-- remove whitespace
+--><input type="text" name="searchBar" id="search"><!-- remove whitespace
+--><button id="finder">Search</button>
+</form>
+
+
+<!-- Reports Selection Icons -->
+<div id="formIcons">
+<form method="get">
+	<button type="submit" name="finance">
+<!--	<img src="images/financeReport.png" id="moneyPhoto">  -->
+	<img src="images/financialReport.png" id="formPhoto">
+	</button>
+	<br><label for="finance"> Team Active Player Salary Cap Report</label>
+</form>
+
+<form method="get" id="injuryReport">
+	<button type="submit" name="injury">
+	<img src="images/injuryReport.jpg" id="formPhoto">
+	</button>
+	<br><label for="injury">Sport Injury Report</label>
+</form>
+</div>
+
+
+
+<!-- Search Results --->	
+ <br>
+ <h4>SEARCH RESULTS:</h4>   
+ <br>
+<div>
+	<table>
+		<caption>Search Results</caption>
+		<thead>
+			<th>Team Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Organization</th>
+		</thead>
+		<tbody>
+			<tr bgcolor="#B9CEFF">
+				<td>Kansas City Chiefs</td>
+				<td>Kansas City</td>
+				<td>Kansas</td>
+				<td>NFL</td>
+			</tr>
+			<tr>
+				<td>Miami Heat</td>
+				<td>Miami</td>
+				<td>Florida</td>
+				<td>NBA</td>
+			</tr>
+		</tbody>
+	</table>  	
+</div>
+			
+ <br>
+<div>
+	<table>
+		<caption>Injuries</caption>
+		<thead>
+			<th>Type</th>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Notes</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Leg</td>
+				<td>Knee - ACL</td>
+				<td>2</td>
+				<td>Questionable for the start of training camp</td>
+			</tr>
+			<tr>
+				<td>Leg</td>
+				<td>Achilles</td>
+				<td>1</td>
+				<td>Questionable for the start of training camp</td>
+			</tr>
+			<tr>
+				<td>Torso</td>
+				<td>Shoulder</td>
+				<td>3</td>
+				<td>N/A</td>
+			</tr>
+		</tbody>
+	</table>  	
+</div>

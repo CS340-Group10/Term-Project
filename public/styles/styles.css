@@ -1,0 +1,111 @@
+
+/* styles for the navigation bar */
+.menu {
+    text-align: center;
+    background-color: #000080;  /* navy blue */
+    height: 75px;
+    padding-top: 20px ;
+}
+
+.field {
+    display: inline-block;
+    margin-right: 75px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#aLink {
+    color: #FFFFFF;  /* white text */
+    text-decoration: none;
+}
+
+table {
+	border: 1px solid;
+
+}
+
+table, th {
+	margin-right: 200px;
+	padding-right: 40px;
+	padding-left: 40px;
+	border: 2px solid;
+	border-collapse: collapse;
+	text-align: center;
+<<<<<<< HEAD
+}
+
+/* styles for report page */
+#search {
+    width: 55%;
+    height: 40px;
+    font-size: 150%;
+    margin-left: 0;
+    padding-left: 10px;
+    border: 1px solid;
+}
+
+.dropdown, #finder {
+    width: 100px;
+    height: 45px;
+    border-radius: 0;
+    font-size: 22px;
+    margin-right: 0;
+    border: 1px solid;
+}
+
+#results {
+    width: 70%;
+    font-size: 32px;
+}
+
+.form1 {
+    padding-bottom: 50px;
+}
+
+#formPhoto {
+    width: 200px;
+    height: 200px;
+}
+
+#injuryReport {
+    position: relative;
+    left: 300px;
+    bottom: 225px;
+}
+
+#formIcons {
+    height: 250px;
+}
+
+
+/* styles for Admin page */
+.addingForms {
+    height: 100px;
+}
+
+
+.addSports {
+    position: relative;
+    border: 1px solid;
+    width: 200px;
+    padding-left: 10px;
+}
+
+.addTeam {
+    position: relative;
+    left: 300px; 
+    border: 1px solid;
+    width: 200px;
+    padding-left: 10px;
+    bottom: 200px;
+}
+
+.addInjury {
+    position: relative;
+    left: 650px; 
+    bottom: 475px;
+    border: 1px solid;
+    width: 200px;
+    padding-left: 10px;
+}
