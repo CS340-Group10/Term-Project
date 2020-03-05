@@ -1,4 +1,4 @@
-# **Product Name**
+# **Group 10: Athletic Career Helper App**
 
 (One or two statements about your product and what it does)
 
