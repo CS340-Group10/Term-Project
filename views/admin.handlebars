@@ -60,25 +60,20 @@
     <table>
       <thead>
         <tr>
+          <th> Sport ID </th>
           <th> Name </th>
-          <th> Update </th>
-          <th> Delete </th>
+          <th> Prof. Org. </th>
         </tr>
       </thead>
       <tbody>
         <tr class="body">
-          <td> Basketball </td>
-          <td> 
-            <form>
-              <input type="button" value="Update">
-            </form>
-          </td>
-          <td> 
-            <form>
-              <input type="button" value="Delete">
-            </form>
-          </td>
-        </tr>
+			{{#each results}}
+			<tr>
+				<td>{{this.id}}</td>
+				<td>{{this.sport_name}}</td>
+				<td>{{this.professional_organization}}</td>
+			</tr>
+			{{/each}}
       </tbody>
 	  </table>
 </div>
