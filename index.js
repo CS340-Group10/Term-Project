@@ -2,23 +2,18 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
-
-var mysql = require("mysql");
-var pool = mysql.createPool({
-  connectionLimit : 10,
-  host            : 'classmysql.engr.oregonstate.edu',
-  user            : 'cs340_yamashch',
-  password        : '0703',
-  database        : 'cs340_yamashch'
-});
-module.exports.pool = pool;
-
+const mysql = require('./dbconnect.js');
+// setup body parser
+const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false});
 
 
 // set up routes
@@ -29,10 +24,21 @@ app.get('/', function(req, res) {
 	});
 });
 
+
 // route for reports page
+// select query for reports page
 app.get('/reports', function(req, res) {
-	res.render('reports', {
-		title: "reports page"
+	var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
+					'JOIN sports ON teams.sport = sports.sport_id';
+	mysql.pool.query(myQuery, function(error, results, fields) {
+		if (error) {
+			console.log("Error Bad query"); 
+			throw error;
+		}
+		res.render('reports', {
+			title: "reports page",
+			results: results
+		});
 	});
 });
 
@@ -43,6 +49,7 @@ app.get('/charts', function(req, res) {
 		title: "charts page"
 	});
 });
+
 
 // route for admin page
 app.get('/admin', function(req, res) {
