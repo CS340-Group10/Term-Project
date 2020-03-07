@@ -13,23 +13,31 @@ app.set('view engine', 'handlebars');
 // set up routes
 // route for home page
 app.get('/', function(req, res) {
-	res.render('home');
+	res.render('home', {
+		title: "home page"
+	});
 });
 
 // route for reports page
 app.get('/reports', function(req, res) {
-	res.render('reports');
+	res.render('reports', {
+		title: "reports page"
+	});
 });
 
 
 // route for charts page
 app.get('/charts', function(req, res) {
-	res.render('charts');
+	res.render('charts', {
+		title: "charts page"
+	});
 });
 
 // route for admin page
 app.get('/admin', function(req, res) {
-	res.render('admin');
+	res.render('admin', {
+		title: "admin page"
+	});
 });
 
 
