@@ -3,6 +3,17 @@ const app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
 
+var mysql = require("mysql");
+var pool = mysql.createPool({
+  connectionLimit : 10,
+  host            : 'classmysql.engr.oregonstate.edu',
+  user            : 'cs340_yamashch',
+  password        : '0703',
+  database        : 'cs340_yamashch'
+});
+module.exports.pool = pool;
+
+
 const PORT = process.env.PORT || 5000;
 
 // Set up handlebars
