@@ -26,48 +26,20 @@ app.get('/', function(req, res) {
 
 
 // route for reports page
-app.get('/reports', function(req, res) {
-	res.render('reports', {
-		title: "reports page"
-	});
-});
-
-/*
 // select query for reports page
 app.get('/reports', function(req, res) {
-	// sql query
-//	var dml = 'SELECT team_name, revenue, city, state, sport FROM teams JOIN sports ' +
-//			  'ON teams.team_id = sports.sport_id';
-	mysql.pool.query('SELECT * FROM sports', function(error, results, fields) {
+	var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
+					'JOIN sports ON teams.sport = sports.sport_id';
+	mysql.pool.query(myQuery, function(error, results, fields) {
 		if (error) {
 			console.log("Error Bad query"); 
 			throw error;
 		}
-		console.log("Result of query: ");
-		console.log(results);
 		res.render('reports', {
+			title: "reports page",
 			results: results
 		});
-	}); 
-});
-*/
-// select query for reports page
-app.get('/reports', function(req, res) {
-	// sql query
-/*	var dml = 'SELECT team_name, revenue, city, state, sport FROM teams JOIN sports ' +
-			  'ON teams.team_id = sports.sport_id';
-*/
-	var context = {};
-	mysql.pool.query('SELECT * FROM sports', function(error, results, fields) {
-		if (error) {
-			console.log("Error Bad query"); 
-			throw error;
-		}
-		console.log("Result of query: ");
-		console.log(results);
-		context.myResult = JSON.stringify(results)
-		res.render('reports', context);
-	}); 
+	});
 });
 
 

@@ -33,44 +33,33 @@
 </div>
 
 
-
 <!-- Search Results --->	
-
-<p> DYNAMIC RESULTS: </p>
-<!-- sample data delete after -->
-<p>{{ myResult }} </p>
-
-
-<p> END OF DYNAMIC </p>
- <br>
  <h4>SEARCH RESULTS:</h4>   
  <br>
 <div>
 	<table>
-		<caption>Search Results</caption>
-		<thead>
+		<thead id="headColor">
 			<th>Team Name</th>
 			<th>City</th>
 			<th>State</th>
 			<th>Organization</th>
+			<th>Active Salary Cap</th>
 		</thead>
 		<tbody>
-			<tr bgcolor="#B9CEFF">
-				<td>Kansas City Chiefs</td>
-				<td>Kansas City</td>
-				<td>Kansas</td>
-				<td>NFL</td>
-			</tr>
+			{{#each results}}
 			<tr>
-				<td>Miami Heat</td>
-				<td>Miami</td>
-				<td>Florida</td>
-				<td>NBA</td>
+				<td>{{this.team_name}}</td>
+				<td>{{this.city}}</td>
+				<td>{{this.state}}</td>
+				<td>{{this.sport_name}}</td>
+				<td>{{this.active_salary_cap}}</td>
 			</tr>
+			{{/each}}
 		</tbody>
 	</table>  	
 </div>
-			
+
+<!-- Need to change the bottom table, I may not need it b/c of handlebars -->		
  <br>
 <div>
 	<table>
