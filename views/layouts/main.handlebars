@@ -3,7 +3,9 @@
 <head>
 	<title>{{ title }}</title>
 	<link rel = "styleSheet" href = "styles/styles.css" type =text/css>
-    <script src="/deletesport.js"></script>
+    {{#each jsscripts}}
+    <script src="/static/{{this}}"></script>
+    {{/each}}
 </head>
 <body>
 	<!-- The navigation bar -->
