@@ -57,17 +57,6 @@ app.get('/charts', function(req, res) {
 });
 
 
-
-
-/*
-// route for admin page
-app.get('/admin', function(req, res) {
-	res.render('admin', {
-		title: "admin page"
-	});
-});*/
-
-
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
 

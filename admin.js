@@ -26,6 +26,22 @@ module.exports = function(){
             complete();
         });
     }
+	
+	function getInjuries(res, mysql, context, complete){
+		var myQuery = "SELECT injury_id, injury_type, injury_name, injury_notes FROM injuries";
+        mysql.pool.query(myQuery, function(error, results, fields){
+		if (error) {
+			console.log("Error Bad query"); 
+			throw error;
+		}
+            context.injuries = results;
+            complete();
+        });
+    }
+	
+	
+	
+	// Show all injuries, teams, sports
 
     router.get('/', function(req, res){
         var callbackCount = 0;
@@ -33,13 +49,33 @@ module.exports = function(){
         var mysql = req.app.get('mysql');
         getSports(res, mysql, context, complete);
         getTeams(res, mysql, context, complete);
+		getInjuries(res, mysql, context, complete);
         function complete(){
 			callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 3){
                 res.render('admin', context);
 			}
         }
     });
+	
+	// Add sports
+	
+    router.post('/', function(req, res){
+        console.log(req.body.sports)
+        console.log(req.body)
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO sports (name, professional_organization) VALUES (?,?)";
+        var inserts = [req.body.sport_name, req.body.prof_org];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/admin');
+            }
+        });
+    });	
 
 	return router;
 
