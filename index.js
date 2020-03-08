@@ -4,7 +4,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const mysql = require('./dbconnect.js');
 // setup body parser
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5011;
 
@@ -15,13 +15,11 @@ app.set('view engine', 'handlebars');
 // set up sql
 
 app.set('mysql', mysql);
-app.use('/admin', require('./admin.js'));
-
 
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false});
-
-
+//const urlencodedParser = bodyParser.urlencoded({ extended: false});
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // set up routes
 // route for home page
@@ -56,10 +54,13 @@ app.get('/charts', function(req, res) {
 	});
 });
 
+//route for admin page
+
+app.use('/admin', require('./admin.js'));
+
 
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // listen on port
 app.listen(PORT, () => console.log("Server Listening on port " + PORT));
