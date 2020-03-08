@@ -59,6 +59,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
 		var context = {};
+		context.jsscripts = ["deletesport.js"];
         var mysql = req.app.get('mysql');
         getSports(res, mysql, context, complete);
         getTeams(res, mysql, context, complete);
@@ -89,8 +90,8 @@ module.exports = function(){
     });	
 	
 	// Add teams, redirects back to admin afterward
-	/*
-    router.post('/', function(req, res){
+
+    router.post('/admin/newteam', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO teams (team_name, city, state, sport) VALUES (?,?,?,?)";
         var inserts = [req.body.team_name, req.body.city, req.body.state, req.body.sport_type];
@@ -104,11 +105,27 @@ module.exports = function(){
             }
         });
     });	
-	*/
+
 	// Update sports
 	
 	
-
+	// Delete sports
+	
+	    router.delete('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM sports WHERE sport_id = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
 
 
 	return router;

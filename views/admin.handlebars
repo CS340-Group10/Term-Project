@@ -18,7 +18,7 @@
       <div class="addTeam" >
       <h2>Add Teams</h2>   
      
-       <form id="addTeam" action="newteam" method="post">
+       <form id="addTeam" action="/admin/newteam" method="post">
         	Team Name:<br><input type="text" name="team_name"><br>
         	City:<br><input type="text" name="city"><br>
         	State:<br><input type="text" name="state"><br>
@@ -58,6 +58,7 @@
           <th> Sport ID </th>
           <th> Name </th>
           <th> Prof. Org. </th>
+		  <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -67,6 +68,7 @@
 				<td>{{this.id}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
+	            <td><button onclick="deletesport({{this.id}})">Delete</button></td>
 			</tr>
 			{{/each}}
       </tbody>
