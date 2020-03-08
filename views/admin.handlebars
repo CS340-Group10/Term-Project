@@ -1,35 +1,33 @@
 <!DOCTYPE html>
+<br><br>
 {{#each foo}}
 {{this}}
 {{/each}}
-<br>
-<div class="addSports">
- <h2>Add Sports</h2>
-<form id="addsport" action="/admin" method="post">
- Name of Sport: <input type="text" name="s_name"><br>
- Sport Organization Name: <input type="text" name="prof_org"><br>
- <br><input type="submit" value="Submit"><br>
- </form> 
-</div>
+
+	<h1>Adding forms</h1>	
+	<div class="addSports">
+		<h2>New Sports</h2>
+		<form id="addsport" action="/admin" method="post">
+			Name of Sport: <input type="text" name="s_name"><br>
+			Sport Organization Name: <input type="text" name="prof_org"><br>
+		<br><input type="submit" value="Submit"><br>
+		</form> 
+	</div>
 
 <div class="addingForms">
       <div class="addTeam" >
       <h2>Add Teams</h2>   
      
-       <form action="/action_page.php">
-        	Team Name:<br>
-        	<input type="text" name="team_name">
-        	<br>
-        	City:<br>
-        	<input type="text" name="city">
-        	<br><br>
-        	State:<br>
-        	<input type="text" name="state">
-        	<br>
-        	Sport Type:<br>
-        	<input type="text" name="sport_name">
-        	<br>
-        	<input type="submit" value="Submit">
+       <form id="addTeam" action="newteam" method="post">
+        	Team Name:<br><input type="text" name="team_name"><br>
+        	City:<br><input type="text" name="city"><br>
+        	State:<br><input type="text" name="state"><br>
+        	Sport Type:<br> <select name="sport_type" 
+			{{#each sports}}
+            <option value="{{id}}">{{sport_name}}</option>
+            {{/each}}
+			</select><br>
+        	<input type="submit" value="Submit"><br>
        </form> 
      </div>
    
@@ -50,10 +48,8 @@
         	<br>
         	<input type="submit" value="Submit">
        </form>
-       </div> 
+      </div> 
    </div>
-   
-<br>
 <div>
   <h2>Update Sports</h2>
     <table>
@@ -129,3 +125,5 @@
       </tbody>
 	  </table>
 </div>
+
+

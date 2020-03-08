@@ -17,7 +17,7 @@ app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
 
 // create application/x-www-form-urlencoded parser
-//const urlencodedParser = bodyParser.urlencoded({ extended: false});
+////const urlencodedParser = bodyParser.urlencoded({ extended: false});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
