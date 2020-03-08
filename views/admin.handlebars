@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{{#each foo}}
+{{this}}
+{{/each}}
 <br><br>
 <div class="addSports">
   <h2>Add Sports</h2>
@@ -67,7 +70,7 @@
       </thead>
       <tbody>
         <tr class="body">
-			{{#each results}}
+			{{#each sports}}
 			<tr>
 				<td>{{this.id}}</td>
 				<td>{{this.sport_name}}</td>
@@ -84,25 +87,23 @@
     <table>
       <thead>
         <tr>
-          <th> Name </th>
-          <th> Update </th>
-          <th> Delete </th>
+			<th>Team Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Organization</th>
+			<th>Active Salary Cap</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="body">
-          <td> _______ </td>
-          <td> 
-            <form>
-              <input type="button" value="Update">
-            </form>
-          </td>
-          <td> 
-            <form>
-              <input type="button" value="Delete">
-            </form>
-          </td>
-        </tr>
+        {{#each teams}}
+			<tr>
+				<td>{{this.team_name}}</td>
+				<td>{{this.city}}</td>
+				<td>{{this.state}}</td>
+				<td>{{this.sport_name}}</td>
+				<td>{{this.active_salary_cap}}</td>
+			</tr>
+		{{/each}}
       </tbody>
 	  </table>
 </div>
