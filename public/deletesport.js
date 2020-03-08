@@ -1,4 +1,4 @@
-function deletesport(id){
+function deleteSport(id){
     $.ajax({
         url: '/admin/' + id,
         type: 'DELETE',
@@ -6,3 +6,5 @@ function deletesport(id){
             window.location.reload(true);
         }
     })
+};
+

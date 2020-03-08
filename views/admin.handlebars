@@ -24,7 +24,7 @@
         	State:<br><input type="text" name="state"><br>
         	Sport Type:<br> <select name="sport_type" 
 			{{#each sports}}
-            <option value="{{id}}">{{sport_name}}</option>
+            <option value="{{sport_id}}">{{sport_name}}</option>
             {{/each}}
 			</select><br>
         	<input type="submit" value="Submit"><br>
@@ -65,10 +65,10 @@
         <tr class="body">
 			{{#each sports}}
 			<tr>
-				<td>{{this.id}}</td>
+				<td>{{this.sport_id}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
-	            <td><button onclick="deletesport({{this.id}})">Delete</button></td>
+	            <td><button onclick="deleteSport({{this.sport_id}})">Delete</button></td>
 			</tr>
 			{{/each}}
       </tbody>

@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getSports(res, mysql, context, complete){
-		var myQuery = "SELECT sport_id as id, sport_name, professional_organization FROM sports";
+		var myQuery = "SELECT sport_id, sport_name, professional_organization FROM sports";
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
 			console.log("Error Bad query"); 
@@ -111,7 +111,7 @@ module.exports = function(){
 	
 	// Delete sports
 	
-	    router.delete('/:id', function(req, res){
+	router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM sports WHERE sport_id = ?";
         var inserts = [req.params.id];

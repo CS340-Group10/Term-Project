@@ -62,5 +62,12 @@ app.use('/admin', require('./admin.js'));
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 404 error
+
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
+
 // listen on port
 app.listen(PORT, () => console.log("Server Listening on port " + PORT));
