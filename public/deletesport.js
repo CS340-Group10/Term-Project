@@ -8,7 +8,7 @@ function deleteSport(id){
     })
 };
 
-/*
+
 function deleteTeam(id){
     $.ajax({
         url: '/admin-team/' + id,
@@ -28,4 +28,4 @@ function deleteInjury(id){
         }
     })
 };
-*/
+
