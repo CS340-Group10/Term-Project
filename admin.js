@@ -90,8 +90,7 @@ module.exports = function(){
     });	
 	
 	// Update sports
-	
-	
+
 	// Delete sports
 	
 	router.delete('/:id', function(req, res){
