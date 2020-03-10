@@ -4,16 +4,21 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const mysql = require('./dbconnect.js');
 // setup body parser
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5011;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+// set up sql
+app.set('mysql', mysql);
+
 // create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false});
+////const urlencodedParser = bodyParser.urlencoded({ extended: false});
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 
 // set up routes
@@ -42,7 +47,6 @@ app.get('/reports', function(req, res) {
 	});
 });
 
-
 // route for charts page
 app.get('/charts', function(req, res) {
 	res.render('charts', {
@@ -50,18 +54,20 @@ app.get('/charts', function(req, res) {
 	});
 });
 
+//route for admin page
+app.use('/admin', require('./admin.js'));
 
-// route for admin page
-app.get('/admin', function(req, res) {
-	res.render('admin', {
-		title: "admin page"
-	});
-});
 
 
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 404 error
+
+app.use(function(req,res){
+  res.status(404);
+  res.render('404');
+});
 
 // listen on port
 app.listen(PORT, () => console.log("Server Listening on port " + PORT));
