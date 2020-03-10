@@ -91,7 +91,7 @@ module.exports = function(){
 	
 	// Add teams, redirects back to admin afterward
 
-    router.post('/admin/newteam', function(req, res){
+    router.post('/admin2', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO teams (team_name, city, state, sport) VALUES (?,?,?,?)";
         var inserts = [req.body.team_name, req.body.city, req.body.state, req.body.sport_type];

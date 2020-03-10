@@ -10,7 +10,7 @@
 		<form id="addsport" action="/admin" method="post">
 			Name of Sport: <input type="text" name="s_name"><br>
 			Sport Organization Name: <input type="text" name="prof_org"><br>
-		<br><input type="submit" value="Submit"><br>
+		<br><input type="submit" name="newsport" value="Submit"><br>
 		</form> 
 	</div>
 
@@ -18,7 +18,7 @@
       <div class="addTeam" >
       <h2>Add Teams</h2>   
      
-       <form id="addTeam" action="/admin/newteam" method="post">
+       <form id="addTeam" action="/admin" method="post">
         	Team Name:<br><input type="text" name="team_name"><br>
         	City:<br><input type="text" name="city"><br>
         	State:<br><input type="text" name="state"><br>
@@ -27,7 +27,7 @@
             <option value="{{sport_id}}">{{sport_name}}</option>
             {{/each}}
 			</select><br>
-        	<input type="submit" value="Submit"><br>
+        	<input type="submit" name="newteam" value="Submit"><br>
        </form> 
      </div>
    
