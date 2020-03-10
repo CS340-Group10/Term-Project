@@ -6,7 +6,7 @@ const mysql = require('./dbconnect.js');
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5011;
+const PORT = process.env.PORT || 5012;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
