@@ -8,3 +8,24 @@ function deleteSport(id){
     })
 };
 
+
+function deleteTeam(id){
+    $.ajax({
+        url: '/admin-team/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};
+
+function deleteInjury(id){
+    $.ajax({
+        url: '/admin-injury/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};
+
