@@ -13,24 +13,24 @@
 		<br><input type="submit" name="newsport" value="Submit"><br>
 		</form> 
 	</div>
+<br><br>
+ <div class="body">
+  <h2>Add Items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th> <li class = "field"><a href = "/admin-teams" id = "addLink">Add Team</a></li> </th>
+          <th> <li class = "field"><a href = "/admin-injuries" id = "addLink">Add Injury</a></li> 
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+	  </table>
+</div>	
 
 <div class="addingForms">
-      <div class="addTeam" >
-      <h2>Add Teams</h2>   
-     
-       <form id="addTeam" action="/admin" method="post">
-        	Team Name:<br><input type="text" name="team_name"><br>
-        	City:<br><input type="text" name="city"><br>
-        	State:<br><input type="text" name="state"><br>
-        	Sport Type:<br> <select name="sport_type" 
-			{{#each sports}}
-            <option value="{{sport_id}}">{{sport_name}}</option>
-            {{/each}}
-			</select><br>
-        	<input type="submit" name="newteam" value="Submit"><br>
-       </form> 
-     </div>
-   
+<br><br> <br><br> 
+
       <div class="addInjury">
       <h2>Add Injuries</h2>   
        <form action="/action_page.php">
@@ -81,21 +81,26 @@
     <table>
       <thead>
         <tr>
+			<th>Team ID</th>
 			<th>Team Name</th>
 			<th>City</th>
 			<th>State</th>
 			<th>Organization</th>
 			<th>Active Salary Cap</th>
+			<th> </th>
         </tr>
       </thead>
       <tbody>
         {{#each teams}}
 			<tr>
+				<td>{{this.team_id}}</td>
 				<td>{{this.team_name}}</td>
 				<td>{{this.city}}</td>
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
+			    <td><button onclick="deleteTeam({{this.team_id}})">Delete</button></td>
+
 			</tr>
 		{{/each}}
       </tbody>
@@ -111,6 +116,7 @@
           <th> Name </th>
           <th> Type </th>
 		  <th> Notes </th>
+		  <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -121,6 +127,7 @@
 				<td>{{this.injury_name}}</td>
 				<td>{{this.injury_type}}</td>
 				<td>{{this.injury_notes}}</td>
+				<td><button onclick="deleteInjury({{this.injury_id}})">Delete</button></td>
 			</tr>
 		{{/each}}
         </tr>

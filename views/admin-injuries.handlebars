@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<br><br>
+{{#each foo}}
+{{this}}
+{{/each}}
+<div class="addingForms">
+<br><br> <br><br> 
+
+      <div class="addInjury">
+      <h2>Add Injuries</h2>   
+       <form action="/admin-injuries" method="post">
+        	Injury Name:<br>
+        	<input type="text" name="injury_name">
+        	<br>
+        	Injury Type:<br>
+        	<input type="text" name="injury_type">
+        	<br><br>
+        	Additional Notes:<br>
+        	<input type="text" name="injury_notes">
+        	<br>
+        	Linked to sport? (Optional)<br>
+        	<input type="text" name="sport_name">
+        	<br>
+        	<input type="submit" value="Submit">
+       </form>
+      </div> 
+   </div>
+<div>
+</html>

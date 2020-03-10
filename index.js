@@ -57,6 +57,7 @@ app.get('/charts', function(req, res) {
 //route for admin page
 
 app.use('/admin', require('./admin.js'));
+app.use('/admin-teams', require('./admin-teams.js'));
 
 
 // This are routes for static html pages

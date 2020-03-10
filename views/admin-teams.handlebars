@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<br><br>
+{{#each foo}}
+{{this}}
+{{/each}}
+
+<li class = "field"><a href = "/admin" id = "addLink"><<< Back</a></li>
+
+<div class="addingForms" >
+	<div class="addSports">
+      <h2>Add Teams</h2>   
+     
+       <form id="addTeam" action="/admin-teams" method="post">
+        	Team Name:<br><input type="text" name="team_name"><br>
+        	City:<br><input type="text" name="city"><br>
+        	State:<br><input type="text" name="state"><br>
+        	Sport Type:<br> <select name="sport_type" 
+			{{#each sports}}
+            <option value="{{sport_id}}">{{sport_name}}</option>
+            {{/each}}
+			</select><br>
+        	<input type="submit" name="newteam" value="Submit"><br>
+       </form> 
+	   </div>
+</div>
+<br><br><br><br><br><br><br><br>
+<div class="body">
+  <h2>Teams</h2>
+    <table>
+      <thead>
+        <tr>
+			<th>Team ID</th>
+			<th>Team Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Organization</th>
+			<th>Active Salary Cap</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each teams}}
+			<tr>
+				<td>{{this.team_id}}</td>
+				<td>{{this.team_name}}</td>
+				<td>{{this.city}}</td>
+				<td>{{this.state}}</td>
+				<td>{{this.sport_name}}</td>
+				<td>{{this.active_salary_cap}}</td>
+			</tr>
+		{{/each}}
+      </tbody>
+	  </table>
+</div>
+
+</html>

@@ -89,23 +89,6 @@ module.exports = function(){
         });
     });	
 	
-	// Add teams, redirects back to admin afterward
-
-    router.post('/admin2', function(req, res){
-        var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO teams (team_name, city, state, sport) VALUES (?,?,?,?)";
-        var inserts = [req.body.team_name, req.body.city, req.body.state, req.body.sport_type];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(JSON.stringify(error))
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.redirect('/admin');
-            }
-        });
-    });	
-
 	// Update sports
 	
 	
