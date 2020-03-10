@@ -13,13 +13,13 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // set up sql
-
 app.set('mysql', mysql);
 
 // create application/x-www-form-urlencoded parser
 ////const urlencodedParser = bodyParser.urlencoded({ extended: false});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
 
 // set up routes
 // route for home page
@@ -55,8 +55,8 @@ app.get('/charts', function(req, res) {
 });
 
 //route for admin page
-
 app.use('/admin', require('./admin.js'));
+
 
 
 // This are routes for static html pages
