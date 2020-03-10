@@ -18,11 +18,12 @@
       <div class="addTeam" >
       <h2>Add Teams</h2>   
      
-       <form id="addTeam" action="/admin/newteam" method="post">
+     <!--  <form id="addTeam" action="/admin/newteam" method="post"> -->
+       <form id="addTeam" action="/admin" method="post">
         	Team Name:<br><input type="text" name="team_name"><br>
         	City:<br><input type="text" name="city"><br>
         	State:<br><input type="text" name="state"><br>
-        	Sport Type:<br> <select name="sport_type" 
+        	Sport Type:<br> <select name="sport_type">
 			{{#each sports}}
             <option value="{{sport_id}}">{{sport_name}}</option>
             {{/each}}
@@ -68,7 +69,7 @@
 				<td>{{this.sport_id}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
-	            <td><button onclick="deleteSport({{this.sport_id}})">Delete</button></td>
+	      <td><button onclick="deleteSport({{this.sport_id}})">Delete</button></td>
 			</tr>
 			{{/each}}
       </tbody>
