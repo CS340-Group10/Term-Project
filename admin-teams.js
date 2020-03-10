@@ -3,8 +3,7 @@ module.exports = function(){
     var router = express.Router();
 	
 	function getTeams(res, mysql, context, complete){
-		var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
-					'JOIN sports ON teams.sport = sports.sport_id';
+		var myQuery = 'SELECT team_id, team_name, active_salary_cap, city, state, sport_name FROM teams ' + 'JOIN sports ON teams.sport = sports.sport_id';
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
 			console.log("Error Bad query"); 
@@ -29,13 +28,13 @@ module.exports = function(){
 
     router.get('/', function(req, res){
         var callbackCount = 0;
-		var context = {};
+		var context = {'deletesport.js'};
         var mysql = req.app.get('mysql');
+		getTeams(res, mysql, context, complete);
 		getSports(res, mysql, context, complete);
-        getTeams(res, mysql, context, complete);
         function complete(){
 			callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 3){
                 res.render('admin-teams', context);
 			}
         }
@@ -57,6 +56,22 @@ module.exports = function(){
             }
         });
     });	
+	
+	router.delete('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM teams WHERE team_id = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
 
 	return router;
 

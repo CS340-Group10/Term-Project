@@ -33,8 +33,9 @@
 			<th>Team Name</th>
 			<th>City</th>
 			<th>State</th>
-			<th>Organization</th>
+			<th>Sport</th>
 			<th>Active Salary Cap</th>
+			<th></th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +47,7 @@
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
+				<td><button onclick="deleteTeam({{this.team_id}})">Delete</button></td>
 			</tr>
 		{{/each}}
       </tbody>
