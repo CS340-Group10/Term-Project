@@ -20,6 +20,12 @@
     text-decoration: none;
 }
 
+#addLink {
+    color: #296dff;  /* white text */
+    text-decoration: none;
+	text-align: center;
+}
+
 table {
 	border: 1px solid;
 
@@ -32,7 +38,6 @@ table, th {
 	border: 2px solid;
 	border-collapse: collapse;
 	text-align: center;
-<<<<<<< HEAD
 }
 
 /* styles for report page */
@@ -78,6 +83,9 @@ table, th {
     height: 250px;
 }
 
+#headColor {
+    background-color: #B9CEFF
+}
 
 /* styles for Admin page */
 .addingForms {
