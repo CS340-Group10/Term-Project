@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 	
 	function getSports(res, mysql, context, complete){
-		var myQuery = "SELECT sport_id, sport_name, professional_organization FROM sports";
+		var myQuery = "SELECT sport_id, sport_name FROM sports";
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
 			console.log("Error Bad query"); 

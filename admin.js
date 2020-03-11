@@ -15,7 +15,7 @@ module.exports = function(){
     }
 	
 	function getTeams(res, mysql, context, complete){
-		var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
+		var myQuery = 'SELECT team_id, team_name, active_salary_cap, city, state, sport_name FROM teams ' +
 					'JOIN sports ON teams.sport = sports.sport_id';
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
@@ -93,9 +93,24 @@ module.exports = function(){
 
 	// Delete sports
 	
-	router.delete('/:id', function(req, res){
+	router.delete('/:id.:name', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM sports WHERE sport_id = ?";
+		var sql;
+		if(req.params.name == "sport"){
+			sql = "DELETE FROM sports WHERE sport_id = ?";
+		}
+		else if(req.params.name == "team"){
+			sql = "DELETE FROM teams WHERE team_id = ?";
+		}
+		else if(req.params.name == "injury"){
+			sql = "DELETE FROM injuries WHERE injury_id = ?";
+		}
+		else{
+			    console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+		}
         var inserts = [req.params.id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){

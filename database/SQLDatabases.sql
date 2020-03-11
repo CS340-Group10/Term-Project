@@ -26,7 +26,7 @@ CREATE TABLE `teams` (
   `revenue` int(20) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `sport` int UNIQUE NOT NULL,
+  `sport` int NOT NULL,
   `active_salary_cap` double DEFAULT (0.00),
   `signed` int(3) DEFAULT (0),
   PRIMARY KEY (`team_id`),

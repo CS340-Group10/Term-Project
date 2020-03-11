@@ -3,8 +3,7 @@ module.exports = function(){
     var router = express.Router();
 	
 	function getTeams(res, mysql, context, complete){
-		var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
-					'JOIN sports ON teams.sport = sports.sport_id';
+		var myQuery = 'SELECT team_id, team_name, city, state, sport_name FROM teams ' + 'JOIN sports ON teams.sport = sports.sport_id';
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
 			console.log("Error Bad query"); 
@@ -16,7 +15,7 @@ module.exports = function(){
     }
 	
 	function getSports(res, mysql, context, complete){
-		var myQuery = "SELECT sport_id, sport_name, professional_organization FROM sports";
+		var myQuery = "SELECT sport_id, sport_name FROM sports";
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
 			console.log("Error Bad query"); 
@@ -31,8 +30,8 @@ module.exports = function(){
         var callbackCount = 0;
 		var context = {};
         var mysql = req.app.get('mysql');
+		getTeams(res, mysql, context, complete);
 		getSports(res, mysql, context, complete);
-        getTeams(res, mysql, context, complete);
         function complete(){
 			callbackCount++;
             if(callbackCount >= 2){
@@ -57,7 +56,7 @@ module.exports = function(){
             }
         });
     });	
-
+	
 	return router;
 
 }();
