@@ -15,7 +15,7 @@ module.exports = function(){
     }
 	
 	function getTeams(res, mysql, context, complete){
-		var myQuery = 'SELECT team_id, team_name, active_salary_cap, city, state, sport_name FROM teams ' +
+		var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
 					'JOIN sports ON teams.sport = sports.sport_id';
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
