@@ -11,7 +11,7 @@ function deleteSport(id){
 
 function deleteTeam(id){
     $.ajax({
-        url: '/admin-team/' + id,
+        url: '/admin-teams/' + id,
         type: 'DELETE',
         success: function(result){
             window.location.reload(true);
@@ -21,7 +21,7 @@ function deleteTeam(id){
 
 function deleteInjury(id){
     $.ajax({
-        url: '/admin-injury/' + id,
+        url: '/admin-injuries/' + id,
         type: 'DELETE',
         success: function(result){
             window.location.reload(true);
