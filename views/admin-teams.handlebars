@@ -3,7 +3,6 @@
 {{#each foo}}
 {{this}}
 {{/each}}
-<br>
 <li class = "field"><a href = "/admin" id = "addLink"><<< Back</a></li>
 <br>
 <div class="addingForms" >
@@ -24,7 +23,8 @@
 	   </div>
 </div>
 <br><br><br><br><br><br><br><br>
-<div class="body">
+
+<div>
   <h2>Teams</h2>
     <table>
       <thead>
@@ -34,8 +34,6 @@
 			<th>City</th>
 			<th>State</th>
 			<th>Sport</th>
-			<th>Active Salary Cap</th>
-			<th></th>
         </tr>
       </thead>
       <tbody>
@@ -46,12 +44,8 @@
 				<td>{{this.city}}</td>
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
-				<td>{{this.active_salary_cap}}</td>
-				<td><button onclick="deleteTeam({{this.team_id}})">Delete</button></td>
 			</tr>
 		{{/each}}
       </tbody>
 	  </table>
 </div>
-
-</html>

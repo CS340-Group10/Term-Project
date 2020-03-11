@@ -46,7 +46,7 @@
 				<td>{{this.sport_id}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
-	            <td><button onclick="deleteSport({{this.sport_id}})">Delete</button></td>
+	            <td><button onclick="deleteSport({{this.sport_id}}, 'sport')">Delete</button></td>
 			</tr>
 			{{/each}}
       </tbody>
@@ -77,7 +77,7 @@
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
-			    <td><button onclick="deleteTeam({{this.team_id}})">Delete</button></td>
+			    <td><button name="teamDelete" onclick="deleteSport({{this.team_id}}, 'team')">Delete</button></td>
 
 			</tr>
 		{{/each}}
@@ -105,7 +105,7 @@
 				<td>{{this.injury_name}}</td>
 				<td>{{this.injury_type}}</td>
 				<td>{{this.injury_notes}}</td>
-				<td><button onclick="deleteInjury({{this.injury_id}})">Delete</button></td>
+				<td><button name="injuryDelete" onclick="deleteSport({{this.injury_id}}, 'injury')">Delete</button></td>
 			</tr>
 		{{/each}}
         </tr>
