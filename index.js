@@ -6,20 +6,20 @@ const mysql = require('./dbconnect.js');
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5011;
+const PORT = process.env.PORT || 5012;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // set up sql
-
 app.set('mysql', mysql);
 
 // create application/x-www-form-urlencoded parser
 ////const urlencodedParser = bodyParser.urlencoded({ extended: false});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
 
 // set up routes
 // route for home page
@@ -55,10 +55,10 @@ app.get('/charts', function(req, res) {
 });
 
 //route for admin page
-
 app.use('/admin', require('./admin.js'));
 app.use('/admin-teams', require('./admin-teams.js'));
 app.use('/admin-injuries', require('./admin-injuries.js'));
+
 
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
