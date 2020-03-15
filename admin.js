@@ -39,7 +39,8 @@ module.exports = function(){
         });
     }
 	
-// get single Sport
+	// get single Sport
+	
     function getSportSingle(res, mysql, context, id, complete){
         var sql = "SELECT sport_id as id, sport_name, professional_organization FROM sports WHERE sport_id = ?";
         var inserts = [id];
@@ -48,7 +49,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.person = results[0];
+            context.sport = results[0];
             complete();
         });
     }
@@ -90,6 +91,40 @@ module.exports = function(){
     });	
 	
 	// Update sports
+	
+    router.get('/sports/:id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updatesport.js"];
+        var mysql = req.app.get('mysql');
+        getSportSingle(res, mysql, context, req.params.id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('update-sport', context);
+            }
+        }
+    });	
+	
+	// UPDATE 
+	
+	router.put('/sports/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE sports SET sport_name=?, professional_organization=? WHERE sport_id=?";
+        var inserts = [req.body.s_name, req.body.prof_org];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
 
 	// Delete sports
 	
