@@ -1,8 +1,8 @@
-function updatePerson(id){
+function updateItem(id){
     $.ajax({
-        url: '/people/' + id,
+        url: '/sports/' + id,
         type: 'PUT',
-        data: $('#update-person').serialize(),
+        data: $('#update-sport').serialize(),
         success: function(result){
             window.location.replace("./");
         }
