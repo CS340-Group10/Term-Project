@@ -42,7 +42,7 @@ module.exports = function(){
 	// get single Sport
 	
     function getSportSingle(res, mysql, context, id, complete){
-        var sql = "SELECT sport_id as id, sport_name, professional_organization FROM sports WHERE sport_id = ?";
+        var sql = "SELECT sport_id, sport_name, professional_organization FROM sports WHERE sport_id = ?";
         var inserts = [id];
         mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -92,7 +92,7 @@ module.exports = function(){
 	
 	// Update sports
 	
-    router.get('/sports/:id', function(req, res){
+    router.get('/admin/sports/:id', function(req, res){
         callbackCount = 0;
         var context = {};
         context.jsscripts = ["updatesport.js"];
@@ -106,14 +106,14 @@ module.exports = function(){
         }
     });	
 	
-	// UPDATE 
+	// UPDATE URI
 	
-	router.put('/sports/:id', function(req, res){
+	router.put('/admin/sports/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
         console.log(req.params.id)
         var sql = "UPDATE sports SET sport_name=?, professional_organization=? WHERE sport_id=?";
-        var inserts = [req.body.s_name, req.body.prof_org];
+        var inserts = [req.body.s_name, req.body.prof_org, req.params.id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)

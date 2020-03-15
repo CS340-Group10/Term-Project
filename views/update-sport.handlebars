@@ -1,8 +1,11 @@
-<div class="addSports">
-		<h2>Update {{sport.sport_name}}:</h2>
-		<form id="update-sport" action="/admin" method="post">
-			Name of Sport: <input type="text" name="s_name" value="{{sport.sport_name}}"><br>
-			Sport Organization Name: <input type="text" name="prof_org" value="{{sport.professional_organization}}"><br>
+<!DOCTYPE html>
+<li class = "field"><a href = "/admin" id = "addLink"><<< Back</a></li>
+<br>
+<div class="addingForms" >
+<h2>Update {{sport.sport_name}}:</h2>
+	<form id="update-sport" action="/admin" method="post">
+		Name of Sport: <input type="text" name="s_name" value="{{sport.sport_name}}"><br>
+		Sport Organization Name: <input type="text" name="prof_org" value="{{sport.professional_organization}}"><br>
 		</form> 
-		<br><button onclick="updateSport({{sport.sport.id}})">Update</button><br>
+	<br><button onclick="updateSport({{sport.id}})">Update</button><br>
 </div>

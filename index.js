@@ -6,7 +6,7 @@ const mysql = require('./dbconnect.js');
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5012;
+const PORT = process.env.PORT || 5011;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
@@ -14,6 +14,7 @@ app.set('view engine', 'handlebars');
 
 // set up sql
 app.set('mysql', mysql);
+app.set('views', path.join(__dirname, 'views'))
 
 // create application/x-www-form-urlencoded parser
 ////const urlencodedParser = bodyParser.urlencoded({ extended: false});
