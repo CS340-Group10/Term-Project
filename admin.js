@@ -100,7 +100,7 @@ module.exports = function(){
         getSportSingle(res, mysql, context, req.params.id, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 1){
                 res.render('update-sport', context);
             }
         }
@@ -158,13 +158,6 @@ module.exports = function(){
             }
         })
     })
-
-router.get('/secret', function(req, res) {
-	res.render('secret', {
-		title: "secret"
-	});
-});
-
 
 	return router;
 

@@ -4,7 +4,7 @@ function updateSport(id){
         type: 'PUT',
         data: $('#update-sport').serialize(),
         success: function(result){
-            window.location.replace("./");
+            window.location.href = ("/admin");
         }
     })
 };
