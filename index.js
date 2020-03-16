@@ -3,10 +3,12 @@ const app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
 const mysql = require('./dbconnect.js');
+app.use('/static', express.static('public'));
+
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5012;
+const PORT = process.env.PORT || 5011;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
@@ -14,6 +16,7 @@ app.set('view engine', 'handlebars');
 
 // set up sql
 app.set('mysql', mysql);
+//app.set('views', path.join(__dirname, 'views'))
 
 // create application/x-www-form-urlencoded parser
 ////const urlencodedParser = bodyParser.urlencoded({ extended: false});
@@ -62,6 +65,8 @@ app.use('/admin-injuries', require('./admin-injuries.js'));
 
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static('public'));
+
 
 // 404 error
 

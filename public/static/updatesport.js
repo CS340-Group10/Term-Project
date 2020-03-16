@@ -1,10 +1,10 @@
-function updatePerson(id){
+function updateSport(id){
     $.ajax({
-        url: '/people/' + id,
+        url: '/admin/sports/' + id,
         type: 'PUT',
-        data: $('#update-person').serialize(),
+        data: $('#update-sport').serialize(),
         success: function(result){
-            window.location.replace("./");
+            window.location.href = ("/admin");
         }
     })
 };
