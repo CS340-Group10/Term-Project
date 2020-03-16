@@ -92,7 +92,7 @@ module.exports = function(){
 	
 	// Update sports
 	
-    router.get('/admin/sports/:id', function(req, res){
+    router.get('/sports/:id', function(req, res){
         callbackCount = 0;
         var context = {};
         context.jsscripts = ["updatesport.js"];
@@ -108,7 +108,7 @@ module.exports = function(){
 	
 	// UPDATE URI
 	
-	router.put('/admin/sports/:id', function(req, res){
+	router.put('/sports/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
         console.log(req.params.id)
@@ -158,6 +158,12 @@ module.exports = function(){
             }
         })
     })
+
+router.get('/secret', function(req, res) {
+	res.render('secret', {
+		title: "secret"
+	});
+});
 
 
 	return router;

@@ -1,6 +1,6 @@
 function updateSport(id){
     $.ajax({
-        url: '/admin/sports/update/' + id,
+        url: '/admin/sports/' + id,
         type: 'PUT',
         data: $('#update-sport').serialize(),
         success: function(result){
