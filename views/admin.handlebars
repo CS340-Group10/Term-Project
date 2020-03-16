@@ -15,7 +15,7 @@
 	</div>
 <br><br>
  <div class="body">
-  <h2>Add Teams or Sports</h2>
+  <h2>Add Teams or Injuries</h2>
     <table>
       <thead>
         <tr>
@@ -37,6 +37,7 @@
           <th> Name </th>
           <th> Prof. Org. </th>
 		  <th> </th>
+		  <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -47,6 +48,7 @@
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
 	            <td><button onclick="deleteSport({{this.sport_id}}, 'sport')">Delete</button></td>
+				<td><a href="/admin/sports/{{this.sport_id}}">Update</a></td>
 			</tr>
 			{{/each}}
       </tbody>
@@ -66,6 +68,7 @@
 			<th>Sport</th>
 			<th>Active Salary Cap</th>
 			<th> </th>
+			<th> </th>
         </tr>
       </thead>
       <tbody>
@@ -78,7 +81,7 @@
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
 			    <td><button name="teamDelete" onclick="deleteSport({{this.team_id}}, 'team')">Delete</button></td>
-
+				<td><a href="/admin/teams/{{this.team_id}}">Update</a></td>
 			</tr>
 		{{/each}}
       </tbody>
@@ -95,6 +98,7 @@
           <th> Type </th>
 		  <th> Notes </th>
 		  <th> </th>
+		  <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -106,6 +110,7 @@
 				<td>{{this.injury_type}}</td>
 				<td>{{this.injury_notes}}</td>
 				<td><button name="injuryDelete" onclick="deleteSport({{this.injury_id}}, 'injury')">Delete</button></td>
+				<td><a href="/admin/injuries/{{this.injury_id}}">Update</a></td>
 			</tr>
 		{{/each}}
         </tr>
