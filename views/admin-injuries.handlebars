@@ -29,4 +29,31 @@
        </form>
       </div> 
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div>
+    <table>
+      <thead>
+        <tr>
+          <th> Injury ID </th>
+          <th> Name </th>
+          <th> Type </th>
+		  <th> Notes </th>
+		  <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="body">
+        {{#each injuries}}
+			<tr>
+				<td>{{this.injury_id}}</td>
+				<td>{{this.injury_name}}</td>
+				<td>{{this.injury_type}}</td>
+				<td>{{this.injury_notes}}</td>
+				<td><a href="/admin-injuries/{{this.injury_id}}">Update</a></td>
+			</tr>
+		{{/each}}
+        </tr>
+      </tbody>
+	  </table>
+</div>
 </html>

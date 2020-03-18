@@ -69,8 +69,6 @@ module.exports = function(){
         });
     }
 	*/
-	// get single Injury
-
 
 	// Show all injuries, teams, sports
 
@@ -143,7 +141,7 @@ module.exports = function(){
         });
     });
 
-	// Delete sports
+	// Delete all items
 	
 	router.delete('/:id.:name', function(req, res){
         var mysql = req.app.get('mysql');
