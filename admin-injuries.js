@@ -36,7 +36,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.sport = results[0];
+            context.inj = results[0];
             complete();
         });
     }
@@ -84,7 +84,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/admin');
+                res.redirect('/admin-injuries');
             }
         });
     });	
