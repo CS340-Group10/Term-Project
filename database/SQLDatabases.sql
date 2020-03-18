@@ -63,6 +63,8 @@ CREATE TABLE `health_risks` (
 	`health_id` int(5) NOT NULL UNIQUE AUTO_INCREMENT,
     `injury_id` int NOT NULL,
     `sport_id` int NOT NULL,
+	`competition_rate` double default(0.00) , 
+	`practice_rate` double default(0.00),
     PRIMARY KEY (`health_id`),
     CONSTRAINT injury_key FOREIGN KEY (`injury_id`) REFERENCES `injuries` (`injury_id`),
 	CONSTRAINT sport_key FOREIGN KEY (sport_id) REFERENCES `sports`(`sport_id`)

@@ -53,6 +53,23 @@ module.exports = function(){
             complete();
         });
     }
+	
+	// get single Team
+	
+    /*function getTeamSingle(res, mysql, context, id, complete){
+        var sql = "SELECT team_id, sport_name, professional_organization FROM sports WHERE sport_id = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.sport = results[0];
+            complete();
+        });
+    }
+	*/
+	// get single Injury
 
 
 	// Show all injuries, teams, sports
