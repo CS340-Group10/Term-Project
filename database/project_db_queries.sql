@@ -27,6 +27,11 @@ SELECT	team_name, revenue, city, state, sport FROM teams
 	ON	teams.team_id = sports.sport_id
 WHERE	team_name = :teamNameInput;
 
+
+SELECT sport_name, injury_name, injury_type FROM health_risks 
+	JOIN sports ON health_risks.sport_id = sports.sport_id
+	JOIN injuries ON health_risks.injury_id = injuries.injury_id
+
 -- update queries
 -- Administration page: updating a sport
 UPDATE sports 

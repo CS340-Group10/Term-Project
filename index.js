@@ -34,21 +34,7 @@ app.get('/', function(req, res) {
 
 
 // route for reports page
-// select query for reports page
-app.get('/reports', function(req, res) {
-	var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
-					'JOIN sports ON teams.sport = sports.sport_id';
-	mysql.pool.query(myQuery, function(error, results, fields) {
-		if (error) {
-			console.log("Error Bad query"); 
-			throw error;
-		}
-		res.render('reports', {
-			title: "reports page",
-			results: results
-		});
-	});
-});
+app.use('/reports', require('./reports.js'));
 
 // route for charts page
 app.get('/charts', function(req, res) {
