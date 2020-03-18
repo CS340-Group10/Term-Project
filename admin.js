@@ -39,6 +39,18 @@ module.exports = function(){
         });
     }
 	
+	function getHealthRisks(res, mysql, context, complete){
+		var myQuery = "SELECT health_id, injury_id, sport_id, practice_rate, competition_rate FROM health_risks";
+        mysql.pool.query(myQuery, function(error, results, fields){
+		if (error) {
+			console.log("Error Bad query"); 
+			throw error;
+		}
+            context.risk = results;
+            complete();
+        });
+    }	
+	
 	// get single Sport
 	
     function getSportSingle(res, mysql, context, id, complete){
@@ -64,9 +76,10 @@ module.exports = function(){
         getSports(res, mysql, context, complete);
         getTeams(res, mysql, context, complete);
 		getInjuries(res, mysql, context, complete);
+		getHealthRisks(res, mysql, context, complete)
         function complete(){
 			callbackCount++;
-            if(callbackCount >= 3){
+            if(callbackCount >= 4){
                 res.render('admin', context);
 			}
         }

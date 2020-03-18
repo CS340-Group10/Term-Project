@@ -119,4 +119,32 @@
 	  </table>
 </div>
 
+<div>
+  <h2>View Health Risks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th> Healh ID </th>
+          <th> Injury ID </th>
+          <th> Sport ID </th>
+		  <th> Practice Rate </th>
+		  <th> Competition Rate </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="body">
+        {{#each risk}}
+			<tr>
+				<td>{{this.health_id}}</td>
+				<td>{{this.injury_id}}</td>
+				<td>{{this.sport_id}}</td>
+				<td>{{this.practice_rate}}</td>
+				<td>{{this.competition_rate}}</td>
+			</tr>
+		{{/each}}
+        </tr>
+      </tbody>
+	  </table>
+</div>
+
 
