@@ -46,7 +46,7 @@ module.exports = function(){
 	router.get('/:id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updateinjury.js"];
+        context.jsscripts = ["updateinjury.js", "selectsport.js"];
         var mysql = req.app.get('mysql');
         getInjurySingle(res, mysql, context, req.params.id, complete);
         function complete(){
@@ -84,7 +84,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/admin-injuries');
+                res.redirect('/admin');
             }
         });
     });	

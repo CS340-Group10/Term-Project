@@ -25,6 +25,23 @@ module.exports = function(){
             complete();
         });
     }
+	
+	// Get Single Team
+	
+	function getTeamSingle(res, mysql, context, id, complete){
+        var sql = "SELECT team_id, team_name, revenue, city, state, sport, active_salary_cap, signed FROM teams WHERE team_id = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.team = results[0];
+            complete();
+        });
+    }
+	
+	// render team management page
 
     router.get('/', function(req, res){
         var callbackCount = 0;
@@ -56,6 +73,44 @@ module.exports = function(){
             }
         });
     });	
+	
+	// Update Teams
+	
+	router.get('/:id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updateteam.js", "selectsport.js"];
+        var mysql = req.app.get('mysql');
+        getTeamSingle(res, mysql, context, req.params.id, complete);
+		getSports(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('update-team', context);
+            }
+        }
+    });	
+	
+	
+	// UPDATE URI FOR TEAMS
+	
+	router.put('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE teams SET team_name=?, city=?, state=?, sport=?, revenue=?, active_salary_cap=?, signed=? WHERE team_id=?";
+        var inserts = [req.body.t_name, req.body.city, req.body.state, req.body.sport_type, req.body.revenue, req.body.active_cap, req.body.signed, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
 	
 	return router;
 

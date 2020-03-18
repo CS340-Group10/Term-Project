@@ -34,6 +34,7 @@
 			<th>City</th>
 			<th>State</th>
 			<th>Sport</th>
+			<th> </th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,7 @@
 				<td>{{this.city}}</td>
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
+				<td><a href="/admin-teams/{{this.team_id}}">Update</a></td>
 			</tr>
 		{{/each}}
       </tbody>

@@ -69,7 +69,6 @@
 			<th>Sport</th>
 			<th>Active Salary Cap</th>
 			<th> </th>
-			<th> </th>
         </tr>
       </thead>
       <tbody>
@@ -82,7 +81,6 @@
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
 			    <td><button name="teamDelete" onclick="deleteSport({{this.team_id}}, 'team')">Delete</button></td>
-				<td><a href="/admin/teams/{{this.team_id}}">Update</a></td>
 			</tr>
 		{{/each}}
       </tbody>
