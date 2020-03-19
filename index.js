@@ -37,11 +37,15 @@ app.get('/', function(req, res) {
 app.use('/reports', require('./reports.js'));
 
 // route for charts page
+app.use('/charts', require('./charts.js'));
+
+/*
 app.get('/charts', function(req, res) {
 	res.render('charts', {
 		title: "charts page"
 	});
 });
+*/
 
 //route for admin page
 app.use('/admin', require('./admin.js'));
