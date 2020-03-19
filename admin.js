@@ -15,7 +15,7 @@ module.exports = function(){
     }
 	
 	function getTeams(res, mysql, context, complete){
-		var myQuery = 'SELECT team_id, team_name, active_salary_cap, city, state, sport_name FROM teams ' +
+		var myQuery = 'SELECT team_id, team_name, active_salary_cap, city, state, revenue, signed, sport_name FROM teams ' +
 					'JOIN sports ON teams.sport = sports.sport_id';
         mysql.pool.query(myQuery, function(error, results, fields){
 		if (error) {
@@ -39,6 +39,18 @@ module.exports = function(){
         });
     }
 	
+	function getHealthRisks(res, mysql, context, complete){
+		var myQuery = "SELECT health_id, injury_id, sport_id, practice_rate, competition_rate FROM health_risks";
+        mysql.pool.query(myQuery, function(error, results, fields){
+		if (error) {
+			console.log("Error Bad query"); 
+			throw error;
+		}
+            context.risk = results;
+            complete();
+        });
+    }	
+	
 	// get single Sport
 	
     function getSportSingle(res, mysql, context, id, complete){
@@ -53,8 +65,7 @@ module.exports = function(){
             complete();
         });
     }
-
-
+	
 	// Show all injuries, teams, sports
 
     router.get('/', function(req, res){
@@ -65,9 +76,10 @@ module.exports = function(){
         getSports(res, mysql, context, complete);
         getTeams(res, mysql, context, complete);
 		getInjuries(res, mysql, context, complete);
+		getHealthRisks(res, mysql, context, complete)
         function complete(){
 			callbackCount++;
-            if(callbackCount >= 3){
+            if(callbackCount >= 4){
                 res.render('admin', context);
 			}
         }
@@ -126,7 +138,7 @@ module.exports = function(){
         });
     });
 
-	// Delete sports
+	// Delete all items
 	
 	router.delete('/:id.:name', function(req, res){
         var mysql = req.app.get('mysql');

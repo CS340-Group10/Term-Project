@@ -4,8 +4,21 @@
 {{this}}
 {{/each}}
 
-	<h1>Adding forms</h1>	
-	<div class="addSports">
+ <div class="body">
+    <table>
+      <thead>
+        <tr>
+          <th> <li class = "field"><a href = "/admin-teams" id = "addLink">Manage Teams</a></li> </th>
+          <th> <li class = "field"><a href = "/admin-injuries" id = "addLink">Manage Injuries</a></li> 
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+	  </table>
+</div>	
+<br><br>
+
+<div class="addSports">
 		<h2>Add New Sport</h2>
 		<form id="addsport" action="/admin" method="post">
 			Name of Sport: <input type="text" name="s_name"><br>
@@ -14,22 +27,10 @@
 		</form> 
 	</div>
 <br><br>
- <div class="body">
-  <h2>Add Teams or Injuries</h2>
-    <table>
-      <thead>
-        <tr>
-          <th> <li class = "field"><a href = "/admin-teams" id = "addLink">Add Team</a></li> </th>
-          <th> <li class = "field"><a href = "/admin-injuries" id = "addLink">Add Injury</a></li> 
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-	  </table>
-</div>	
+
 
 <div>
-  <h2>Update Sports</h2>
+  <h2>Update/Delete Sports</h2>
     <table>
       <thead>
         <tr>
@@ -57,7 +58,7 @@
 
 <br>
 <div>
-  <h2>Teams</h2>
+  <h2>View Teams</h2>
     <table>
       <thead>
         <tr>
@@ -67,7 +68,8 @@
 			<th>State</th>
 			<th>Sport</th>
 			<th>Active Salary Cap</th>
-			<th> </th>
+			<th>Revenue</th>
+			<th>Signed</th>
 			<th> </th>
         </tr>
       </thead>
@@ -80,8 +82,9 @@
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
+				<td>{{this.revenue}}</td>
+				<td>{{this.signed}}</td>
 			    <td><button name="teamDelete" onclick="deleteSport({{this.team_id}}, 'team')">Delete</button></td>
-				<td><a href="/admin/teams/{{this.team_id}}">Update</a></td>
 			</tr>
 		{{/each}}
       </tbody>
@@ -89,7 +92,7 @@
 </div>
 <br>
 <div>
-  <h2>Injuries</h2>
+  <h2>View Injuries</h2>
     <table>
       <thead>
         <tr>
@@ -97,7 +100,6 @@
           <th> Name </th>
           <th> Type </th>
 		  <th> Notes </th>
-		  <th> </th>
 		  <th> </th>
         </tr>
       </thead>
@@ -110,7 +112,34 @@
 				<td>{{this.injury_type}}</td>
 				<td>{{this.injury_notes}}</td>
 				<td><button name="injuryDelete" onclick="deleteSport({{this.injury_id}}, 'injury')">Delete</button></td>
-				<td><a href="/admin/injuries/{{this.injury_id}}">Update</a></td>
+			</tr>
+		{{/each}}
+        </tr>
+      </tbody>
+	  </table>
+</div>
+
+<div>
+  <h2>View Health Risks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th> Healh ID </th>
+          <th> Injury ID </th>
+          <th> Sport ID </th>
+		  <th> Practice Rate </th>
+		  <th> Competition Rate </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="body">
+        {{#each risk}}
+			<tr>
+				<td>{{this.health_id}}</td>
+				<td>{{this.injury_id}}</td>
+				<td>{{this.sport_id}}</td>
+				<td>{{this.practice_rate}}</td>
+				<td>{{this.competition_rate}}</td>
 			</tr>
 		{{/each}}
         </tr>

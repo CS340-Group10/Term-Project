@@ -8,7 +8,7 @@ app.use('/static', express.static('public'));
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5011;
+const PORT = process.env.PORT || 5017;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
