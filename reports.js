@@ -21,8 +21,8 @@ module.exports = function() {
 	// This is for the "Sports Injury Report"
 	function getInjuryReport(res, mysql, context, complete) {
 		
-		var myQuery = 'SELECT sport_name, injury_name, injury_type FROM health_risks ' +  
-						'JOIN sports ON health_risks.sport_id = sports.sport_id ' +
+		var myQuery = 'SELECT sport_name, injury_name, injury_type, competition_rate, practice_rate ' +
+						'FROM health_risks JOIN sports ON health_risks.sport_id = sports.sport_id ' +
 						'JOIN injuries ON health_risks.injury_id = injuries.injury_id'; 
 
 		mysql.pool.query(myQuery, function(error, results, fields) {
