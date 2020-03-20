@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<br>
+<li class = "field"><a href = "/admin" id = "addLink"><<< Back</a></li>
+<br>
+<div class="addingForms" >
+	<div class="addSports">
+      <h2>Add Injuries</h2>   
+       <form action="/admin-injuries" method="post">
+        	Injury Name:<br>
+        	<input type="text" name="injury_name">
+        	<br>
+        	Injury Type:<br>
+        	<input type="text" name="injury_type">
+        	<br><br>
+        	Additional Notes:<br>
+        	<input type="text" name="injury_notes">
+        	<br>
+        	Linked to Sport:<br> <select name="sport_type" 
+			{{#each sports}}
+            <option value="{{sport_id}}">{{sport_name}}</option>
+            {{/each}}
+			</select><br>
+        	<br>
+        	<input type="submit" value="Submit">
+       </form>
+      </div> 
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div>
+    <table>
+      <thead>
+        <tr>
+          <th> Injury ID </th>
+          <th> Name </th>
+          <th> Type </th>
+		  <th> Notes </th>
+		  <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="body">
+        {{#each injuries}}
+			<tr>
+				<td>{{this.injury_id}}</td>
+				<td>{{this.injury_name}}</td>
+				<td>{{this.injury_type}}</td>
+				<td>{{this.injury_notes}}</td>
+				<td><a href="/admin-injuries/{{this.injury_id}}">Update</a></td>
+			</tr>
+		{{/each}}
+        </tr>
+      </tbody>
+	  </table>
+</div>
+</html>

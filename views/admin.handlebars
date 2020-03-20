@@ -4,61 +4,40 @@
 {{this}}
 {{/each}}
 
-	<h1>Adding forms</h1>	
-	<div class="addSports">
-		<h2>New Sports</h2>
+ <div class="body">
+    <table>
+      <thead>
+        <tr>
+          <th> <li class = "field"><a href = "/admin-teams" id = "addLink">Manage Teams</a></li> </th>
+          <th> <li class = "field"><a href = "/admin-injuries" id = "addLink">Manage Injuries</a></li> 
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+	  </table>
+</div>	
+<br><br>
+
+<div class="addSports">
+		<h2>Add New Sport</h2>
 		<form id="addsport" action="/admin" method="post">
 			Name of Sport: <input type="text" name="s_name"><br>
 			Sport Organization Name: <input type="text" name="prof_org"><br>
-		<br><input type="submit" value="Submit"><br>
+		<br><input type="submit" name="newsport" value="Submit"><br>
 		</form> 
 	</div>
+<br><br>
 
-<div class="addingForms">
-      <div class="addTeam" >
-      <h2>Add Teams</h2>   
-     
-     <!--  <form id="addTeam" action="/admin/newteam" method="post"> -->
-       <form id="addTeam" action="/admin" method="post">
-        	Team Name:<br><input type="text" name="team_name"><br>
-        	City:<br><input type="text" name="city"><br>
-        	State:<br><input type="text" name="state"><br>
-        	Sport Type:<br> <select name="sport_type">
-			{{#each sports}}
-            <option value="{{sport_id}}">{{sport_name}}</option>
-            {{/each}}
-			</select><br>
-        	<input type="submit" value="Submit"><br>
-       </form> 
-     </div>
-   
-      <div class="addInjury">
-      <h2>Add Injuries</h2>   
-       <form action="/action_page.php">
-        	Injury Name:<br>
-        	<input type="text" name="injury_name">
-        	<br>
-        	Injury Type:<br>
-        	<input type="text" name="injury_type">
-        	<br><br>
-        	Additional Notes:<br>
-        	<input type="text" name="injury_notes">
-        	<br>
-        	Linked to sport? (Optional)<br>
-        	<input type="text" name="sport_name">
-        	<br>
-        	<input type="submit" value="Submit">
-       </form>
-      </div> 
-   </div>
+
 <div>
-  <h2>Update Sports</h2>
+  <h2>Update/Delete Sports</h2>
     <table>
       <thead>
         <tr>
           <th> Sport ID </th>
           <th> Name </th>
           <th> Prof. Org. </th>
+		  <th> </th>
 		  <th> </th>
         </tr>
       </thead>
@@ -69,7 +48,8 @@
 				<td>{{this.sport_id}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.professional_organization}}</td>
-	      <td><button onclick="deleteSport({{this.sport_id}})">Delete</button></td>
+	            <td><button onclick="deleteSport({{this.sport_id}}, 'sport')">Delete</button></td>
+				<td><a href="/admin/sports/{{this.sport_id}}">Update</a></td>
 			</tr>
 			{{/each}}
       </tbody>
@@ -78,25 +58,33 @@
 
 <br>
 <div>
-  <h2>Update Teams</h2>
+  <h2>View Teams</h2>
     <table>
       <thead>
         <tr>
+			<th>Team ID</th>
 			<th>Team Name</th>
 			<th>City</th>
 			<th>State</th>
-			<th>Organization</th>
+			<th>Sport</th>
 			<th>Active Salary Cap</th>
+			<th>Revenue</th>
+			<th>Signed</th>
+			<th> </th>
         </tr>
       </thead>
       <tbody>
         {{#each teams}}
 			<tr>
+				<td>{{this.team_id}}</td>
 				<td>{{this.team_name}}</td>
 				<td>{{this.city}}</td>
 				<td>{{this.state}}</td>
 				<td>{{this.sport_name}}</td>
 				<td>{{this.active_salary_cap}}</td>
+				<td>{{this.revenue}}</td>
+				<td>{{this.signed}}</td>
+			    <td><button name="teamDelete" onclick="deleteSport({{this.team_id}}, 'team')">Delete</button></td>
 			</tr>
 		{{/each}}
       </tbody>
@@ -104,7 +92,7 @@
 </div>
 <br>
 <div>
-  <h2>Update Injuries</h2>
+  <h2>View Injuries</h2>
     <table>
       <thead>
         <tr>
@@ -112,6 +100,7 @@
           <th> Name </th>
           <th> Type </th>
 		  <th> Notes </th>
+		  <th> </th>
         </tr>
       </thead>
       <tbody>
@@ -122,6 +111,35 @@
 				<td>{{this.injury_name}}</td>
 				<td>{{this.injury_type}}</td>
 				<td>{{this.injury_notes}}</td>
+				<td><button name="injuryDelete" onclick="deleteSport({{this.injury_id}}, 'injury')">Delete</button></td>
+			</tr>
+		{{/each}}
+        </tr>
+      </tbody>
+	  </table>
+</div>
+
+<div>
+  <h2>View Health Risks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th> Healh ID </th>
+          <th> Injury ID </th>
+          <th> Sport ID </th>
+		  <th> Practice Rate </th>
+		  <th> Competition Rate </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="body">
+        {{#each risk}}
+			<tr>
+				<td>{{this.health_id}}</td>
+				<td>{{this.injury_id}}</td>
+				<td>{{this.sport_id}}</td>
+				<td>{{this.practice_rate}}</td>
+				<td>{{this.competition_rate}}</td>
 			</tr>
 		{{/each}}
         </tr>

@@ -3,10 +3,12 @@ const app = express();
 const path = require('path');
 const exphbs = require('express-handlebars');
 const mysql = require('./dbconnect.js');
+app.use('/static', express.static('public'));
+
 // setup body parser
 var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 5011;
+const PORT = process.env.PORT || 5017;
 
 // Set up handlebars
 app.engine('handlebars', exphbs());
@@ -14,6 +16,7 @@ app.set('view engine', 'handlebars');
 
 // set up sql
 app.set('mysql', mysql);
+//app.set('views', path.join(__dirname, 'views'))
 
 // create application/x-www-form-urlencoded parser
 ////const urlencodedParser = bodyParser.urlencoded({ extended: false});
@@ -27,40 +30,25 @@ app.get('/', function(req, res) {
 	res.render('home', {
 		title: "home page"
 	});
-});
+}); 
+
 
 
 // route for reports page
-// select query for reports page
-app.get('/reports', function(req, res) {
-	var myQuery = 'SELECT team_name, active_salary_cap, city, state, sport_name FROM teams ' +
-					'JOIN sports ON teams.sport = sports.sport_id';
-	mysql.pool.query(myQuery, function(error, results, fields) {
-		if (error) {
-			console.log("Error Bad query"); 
-			throw error;
-		}
-		res.render('reports', {
-			title: "reports page",
-			results: results
-		});
-	});
-});
+app.use('/reports', require('./reports.js'));
 
 // route for charts page
-app.get('/charts', function(req, res) {
-	res.render('charts', {
-		title: "charts page"
-	});
-});
+app.use('/charts', require('./charts.js'));
 
 //route for admin page
 app.use('/admin', require('./admin.js'));
-
-
+app.use('/admin-teams', require('./admin-teams.js'));
+app.use('/admin-injuries', require('./admin-injuries.js'));
 
 // This are routes for static html pages
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static('public'));
+
 
 // 404 error
 

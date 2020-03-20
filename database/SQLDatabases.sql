@@ -26,7 +26,7 @@ CREATE TABLE `teams` (
   `revenue` int(20) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
-  `sport` int UNIQUE NOT NULL,
+  `sport` int NOT NULL,
   `active_salary_cap` double DEFAULT (0.00),
   `signed` int(3) DEFAULT (0),
   PRIMARY KEY (`team_id`),
@@ -63,6 +63,8 @@ CREATE TABLE `health_risks` (
 	`health_id` int(5) NOT NULL UNIQUE AUTO_INCREMENT,
     `injury_id` int NOT NULL,
     `sport_id` int NOT NULL,
+	`competition_rate` double default(0.00) , 
+	`practice_rate` double default(0.00),
     PRIMARY KEY (`health_id`),
     CONSTRAINT injury_key FOREIGN KEY (`injury_id`) REFERENCES `injuries` (`injury_id`),
 	CONSTRAINT sport_key FOREIGN KEY (sport_id) REFERENCES `sports`(`sport_id`)

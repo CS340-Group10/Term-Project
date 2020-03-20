@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<br>
+<li class = "field"><a href = "/admin" id = "addLink"><<< Back</a></li>
+<br>
+<div class="addingForms">
+      <h2>Update {{inj.injury_name}}</h2>   
+       <form id="update-injury" action="/admin" method="post">
+        	Injury Name:<br>
+        	<input type="text" name="in_name" value="{{inj.injury_name}}">
+        	<br>
+        	Injury Type:<br>
+        	<input type="text" name="in_type" value="{{inj.injury_type}}">
+        	<br><br>
+        	Additional Notes:<br>
+        	<input type="text" name="in_notes" value="{{inj.injury_notes}}">
+		</form>
+		<br><button onclick="updateInjury({{inj.injury_id}})">Update</button><br>	
+      
+</div>

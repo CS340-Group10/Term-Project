@@ -27,11 +27,30 @@ SELECT	team_name, revenue, city, state, sport FROM teams
 	ON	teams.team_id = sports.sport_id
 WHERE	team_name = :teamNameInput;
 
+
+SELECT	team_name, active_salary_cap, city, state, sport FROM teams 
+	JOIN sports
+	ON	teams.team_id = sports.sport_id
+
+
+SELECT sport_name, injury_name, injury_type, competition_rate, practice_rate FROM health_risks 
+	JOIN sports ON health_risks.sport_id = sports.sport_id
+	JOIN injuries ON health_risks.injury_id = injuries.injury_id
+
 -- update queries
 -- Administration page: updating a sport
 UPDATE sports 
 	SET sport_name = :sportName, professional_organization = :profOrg
     WHERE sport_name = :sportName
+
+--  
+UPDATE teams 
+	SET team_name= :req.body.t_name, city= :req.body.city, state= :req.body.state, sport= :req.body.sport_type, revenue= :req.body.revenue, active_salary_cap= :req.body.active_cap, signed= :req.body.signed 
+	WHERE team_id= :req.params.id
+
+UPDATE injuries 
+	SET injury_name= :req.body.in_name, injury_type= :req.body.in_type, injury_notes= :req.body.in_notes 
+	WHERE injury_id= :req.params.id
 
 
 -- delete queries

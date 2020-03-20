@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <h2> Search health risks by Sport </h2>
 
-<form action="/action_page.php">
+
+<form id='search_sport' action="/charts">
   <label for="sport_name">Sport name:</label><br>
-  <input type="text" name="sport_name"><br>
-  <input type="submit" value="Submit">
+  <input type="text" id="sport_name" name="sport_name"><br>
+  <input type="submit" value="Submit" onclick="searchSport()">
 </form> 
+
+<br>
+<div>
+	<table>
+		<th>Sport</th>
+		<th>Professional Organization</th>
+	</table>
+		{{#each sport}}
+		<tr>
+			<td>{{this.sport_name}}</td>
+			<td>{{this.organization}}</td>
+		</tr>
+		{{/each}}
+</div>
 
  <br>
 <div>
@@ -36,7 +51,6 @@
 <br>
 <br>
 
-<img src="https://nflinjuryanalyticscom.files.wordpress.com/2017/06/injury-rates-across-sports-e1496779500701.png" width="500">
 
 <h2> Search health risks by Injury Name </h2>
 
