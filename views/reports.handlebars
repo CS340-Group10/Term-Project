@@ -28,10 +28,9 @@
 	<button type="submit" name="injury">
 	<img src="images/injuryReport.jpg" id="formPhoto">
 	</button>
-	<br><label for="injury">Sport Injury Report</label>
+	<br><label for="injury">Sports Injury Report</label>
 </form>
 </div>
-
 
 <!-- Search Results --->	
  <h4>SEARCH RESULTS:</h4>   
@@ -61,34 +60,26 @@
 
 <!-- Need to change the bottom table, I may not need it b/c of handlebars -->		
  <br>
-<div>
+ <div>
 	<table>
 		<caption>Injuries</caption>
-		<thead>
-			<th>Type</th>
-			<th>Name</th>
-			<th>Amount</th>
-			<th>Notes</th>
+		<thead id="headColor">
+			<th>Sport</th>
+			<th>Injury Name</th>
+			<th>Injury Type</th>
+			<th>Competition Injury Rate </th>   
+			<th>Practice Injury Rate </th>
 		</thead>
 		<tbody>
+			{{#each row}}
 			<tr>
-				<td>Leg</td>
-				<td>Knee - ACL</td>
-				<td>2</td>
-				<td>Questionable for the start of training camp</td>
+				<td>{{this.sport_name}}</td>
+				<td>{{this.injury_name}}</td>
+				<td>{{this.injury_type}}</td>
+				<td>{{this.competition_rate}}</td>
+				<td>{{this.practice_rate}}</td>
 			</tr>
-			<tr>
-				<td>Leg</td>
-				<td>Achilles</td>
-				<td>1</td>
-				<td>Questionable for the start of training camp</td>
-			</tr>
-			<tr>
-				<td>Torso</td>
-				<td>Shoulder</td>
-				<td>3</td>
-				<td>N/A</td>
-			</tr>
+			{{/each}}
 		</tbody>
 	</table>  	
 </div>

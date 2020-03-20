@@ -1,5 +1,9 @@
+/*****************************
 
-/* styles for the navigation bar */
+styles for the navigation bar 
+
+*****************************/
+
 .menu {
     text-align: center;
     background-color: #000080;  /* navy blue */
@@ -26,6 +30,14 @@
 	text-align: center;
 }
 
+
+/*****************************
+
+Styles for All Webpages
+
+*****************************/
+
+
 table {
 	border: 1px solid;
 
@@ -40,7 +52,20 @@ table, th {
 	text-align: center;
 }
 
-/* styles for report page */
+/*****************************
+ 
+styles for home page 
+
+*****************************/
+#nfl_pic {
+    width: 100%;
+}
+
+/*****************************
+ 
+styles for report page 
+
+*****************************/
 #search {
     width: 55%;
     height: 40px;
@@ -87,7 +112,12 @@ table, th {
     background-color: #B9CEFF
 }
 
-/* styles for Admin page */
+/*****************************
+
+ styles for Admin page 
+
+*****************************/
+
 .addingForms {
     height: 100px;
 }
