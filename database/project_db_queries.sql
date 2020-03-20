@@ -43,6 +43,15 @@ UPDATE sports
 	SET sport_name = :sportName, professional_organization = :profOrg
     WHERE sport_name = :sportName
 
+--  
+UPDATE teams 
+	SET team_name= :req.body.t_name, city= :req.body.city, state= :req.body.state, sport= :req.body.sport_type, revenue= :req.body.revenue, active_salary_cap= :req.body.active_cap, signed= :req.body.signed 
+	WHERE team_id= :req.params.id
+
+UPDATE injuries 
+	SET injury_name= :req.body.in_name, injury_type= :req.body.in_type, injury_notes= :req.body.in_notes 
+	WHERE injury_id= :req.params.id
+
 
 -- delete queries
 -- Administration page: delete sport
